@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to SOLID principles &#8212; SOLID Principles</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to SOLID Principles" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="SOLID Principles - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="SOLID Principles - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to SOLID Principles
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to SOLID principles</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/notebooks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to SOLID principles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to SOLID principles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-principles-improve-object-oriented-design-in-python"><strong>SOLID Principles: Improve Object-Oriented Design in Python</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-responsibility-principle-srp">1. <strong>Single-Responsibility Principle (SRP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-closed-principle-ocp"><strong>2. Open-Closed Principle (OCP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liskov-substitution-principle-lsp"><strong>3. Liskov Substitution Principle (LSP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-segregation-principle-isp"><strong>4. Interface Segregation Principle (ISP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-inversion-principle-dip"><strong>5. Dependency Inversion Principle (DIP)</strong></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-solid-principles">
+<h1>Introduction to SOLID principles<a class="headerlink" href="#introduction-to-solid-principles" title="Link to this heading">#</a></h1>
+<p>Created by: Juliana Alejandra Gutierrez Castro
+Created time: July 30, 2024 7:42 PM</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="solid-principles-improve-object-oriented-design-in-python">
+<h1><strong>SOLID Principles: Improve Object-Oriented Design in Python</strong><a class="headerlink" href="#solid-principles-improve-object-oriented-design-in-python" title="Link to this heading">#</a></h1>
+<p>When you build a Python project using <strong>object-oriented programming (OOP)</strong>, planning how the different classes and objects will interact to solve your specific problems is an important part of the job. This planning is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Object-oriented_design">object-oriented design (OOD)</a>, and getting it right can be a challenge. If you’re stuck while designing your Python classes, then the <strong>SOLID principles</strong> can help you out.
+SOLID is a set of five object-oriented design principles that can help you write more maintainable, flexible, and scalable code based on well-designed, cleanly structured classes.</p>
+<p><strong>Object-Oriented Design in Python: The SOLID Principles</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Single-responsibility_principle"><strong>S</strong>ingle-responsibility principle (SRP)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle"><strong>O</strong>pen–closed principle (OCP)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Liskov_substitution_principle"><strong>L</strong>iskov substitution principle (LSP)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interface_segregation_principle"><strong>I</strong>nterface segregation principle (ISP)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_inversion_principle"><strong>D</strong>ependency inversion principle (DIP)</a></p></li>
+</ol>
+<section id="single-responsibility-principle-srp">
+<h2>1. <strong>Single-Responsibility Principle (SRP)</strong><a class="headerlink" href="#single-responsibility-principle-srp" title="Link to this heading">#</a></h2>
+<p>The single-responsibility principle states that:</p>
+<blockquote>
+<div><p>A class should have only one reason to change.</p>
+</div></blockquote>
+<p>This means that a class should have only one <strong>responsibility</strong>, as expressed through its methods. If a class takes care of more than one task, then you should separate those tasks into separate classes.</p>
+<p>This principle is closely related to the concept of <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>, which suggests that you should split your programs into different sections. Each section must address a separate concern.</p>
+<p>To illustrate the single-responsibility principle and how it can help you improve your object-oriented design, say that you have the following <code class="docutils literal notranslate"><span class="pre">FileManager</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_manager_srp.py</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+
+<span class="k">class</span> <span class="nc">FileManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<aside>
+💡 1.  **What does path.read_text() method do?**
+<ul class="simple">
+<li><p>It opens the file specified by the path in text mode.</p></li>
+<li><p>It reads the entire contents of the file as a string.</p></li>
+<li><p>It automatically closes the file after reading.</p></li>
+</ul>
+<p><strong>This method is a convenient way to read the full contents of a text file in a single line of code. It’s equivalent to opening a file, reading all its contents, and then closing it, but more concise.</strong></p>
+<ol class="arabic simple">
+<li><p><strong>What does path.with_suffix() method do?</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Return a new path with the <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PurePath.suffix"><code class="docutils literal notranslate"><span class="pre">suffix</span></code></a> changed. If the original path doesn’t have a suffix, the new <em>suffix</em> is appended instead. If the <em>suffix</em> is an empty string, the original suffix is removed.</p></li>
+</ul>
+</aside>
+<p>In this example, your <code class="docutils literal notranslate"><span class="pre">FileManager</span></code> class has two different responsibilities. It uses the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> and <code class="docutils literal notranslate"><span class="pre">.write()</span></code> methods to manage the file. It also deals with <a class="reference external" href="https://realpython.com/python-zipfile/">ZIP archives</a> by providing the <code class="docutils literal notranslate"><span class="pre">.compress()</span></code> and <code class="docutils literal notranslate"><span class="pre">.decompress()</span></code> methods.</p>
+<p>This class violates the single-responsibility principle because it has two reasons for changing its internal implementation. To fix this issue and make your design more robust, you can split the class into two smaller, more focused classes, each with its own specific concern:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_manager_srp.py</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+
+<span class="k">class</span> <span class="nc">FileManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ZipFileManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now you have two smaller classes, each having only a single responsibility. <code class="docutils literal notranslate"><span class="pre">FileManager</span></code> takes care of managing a file, while <code class="docutils literal notranslate"><span class="pre">ZipFileManager</span></code> handles the <a class="reference external" href="https://realpython.com/python-zipfile/#compressing-files-and-directories">compression</a> and <a class="reference external" href="https://realpython.com/python-zipfile/#extracting-member-files-from-your-zip-archives">decompression</a> of a file using the ZIP format. These two classes are smaller, so they’re more manageable. They’re also easier to reason about, test, and debug.</p>
+<aside>
+💡 The concept of responsibility in this context may be pretty subjective. Having a single responsibility doesn’t necessarily mean having a single method. Responsibility isn’t directly tied to the number of methods but **to the core task that your class is responsible for**, **depending on your idea of what the class represents in your code**. However, that subjectivity shouldn’t stop you from striving to use the SRP.
+</aside>
+</section>
+<section id="open-closed-principle-ocp">
+<h2><strong>2. Open-Closed Principle (OCP)</strong><a class="headerlink" href="#open-closed-principle-ocp" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.</p>
+</div></blockquote>
+<p>To understand what the open-closed principle is all about, consider the following <code class="docutils literal notranslate"><span class="pre">Shape</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_ocp.py</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">=</span> <span class="n">shape_type</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;circle&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;radius&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;circle&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The initializer of <code class="docutils literal notranslate"><span class="pre">Shape</span></code> takes a <code class="docutils literal notranslate"><span class="pre">shape_type</span></code> argument that can be either <code class="docutils literal notranslate"><span class="pre">&quot;rectangle&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;circle&quot;</span></code>. It also takes a specific set of keyword arguments using the <a class="reference external" href="https://realpython.com/python-kwargs-and-args/"><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></a> syntax. If you set the shape type to <code class="docutils literal notranslate"><span class="pre">&quot;rectangle&quot;</span></code>, then you should also pass the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> keyword arguments so that you can construct a proper rectangle.</p>
+<p>In contrast, if you set the shape type to <code class="docutils literal notranslate"><span class="pre">&quot;circle&quot;</span></code>, then you must also pass a <code class="docutils literal notranslate"><span class="pre">radius</span></code> argument to construct a circle.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Shape</span></code> also has a <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> method that computes the area of the current shape according to its <code class="docutils literal notranslate"><span class="pre">.shape_type</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_ocp</span> <span class="kn">import</span> <span class="n">Shape</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span>
+<span class="mi">50</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span>
+<span class="mf">78.53981633974483</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_ocp</span> <span class="kn">import</span> <span class="n">Shape</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;shapes_ocp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The class works. You can create circles and rectangles, compute their area, and so on. However, the class looks pretty bad. Something seems wrong with it at first sight.</p>
+<p>Imagine that you need to add a new shape, maybe a square. How would you do that? Well, the option here is to add another <code class="docutils literal notranslate"><span class="pre">elif</span></code> clause to <a class="reference external" href="https://realpython.com/python-class-constructor/#object-initialization-with-__init__"><code class="docutils literal notranslate"><span class="pre">.__init__()</span></code></a> and to <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> so that you can address the requirements of a square shape.</p>
+<p>Having to make these changes to create new shapes means that your class is open to modification. That violates the open-closed principle. How can you fix your class to make it <strong>open to extension but closed to modification</strong>? Here’s a possible solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_ocp.py</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">=</span> <span class="n">shape_type</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;square&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this code, you completely <a class="reference external" href="https://realpython.com/python-refactoring/">refactored</a> the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> class, turning it into an <a class="reference external" href="https://realpython.com/python-classes/#creating-abstract-base-classes-abc-and-interfaces">abstract base class (ABC)</a>. This class provides the required <a class="reference external" href="https://en.wikipedia.org/wiki/API">interface (API)</a> for any shape that you’d like to define. That <a class="reference external" href="https://realpython.com/python-interface/">interface</a> consists of a <code class="docutils literal notranslate"><span class="pre">.shape_type</span></code> attribute and a <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> method that you must override in all the subclasses.</p>
+<aside>
+💡 **Note:** The example above and some examples in the next sections use Python’s ABCs to provide what’s called **interface inheritance**. In this type of inheritance, subclasses inherit interfaces rather than functionality. In contrast, when classes inherit functionality, then you’re presented with **implementation inheritance**.
+</aside>
+<p>This update closes the class to modifications. Now you can add new shapes to your class design without the need to modify <code class="docutils literal notranslate"><span class="pre">Shape</span></code>. In every case, you’ll have to implement the required interface, which also makes your classes <a class="reference external" href="https://realpython.com/python-classes/#unlocking-polymorphism-with-common-interfaces">polymorphic</a>.</p>
+</section>
+<section id="liskov-substitution-principle-lsp">
+<h2><strong>3. Liskov Substitution Principle (LSP)</strong><a class="headerlink" href="#liskov-substitution-principle-lsp" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Subtypes must be substitutable for their base types.</p>
+</div></blockquote>
+<p>For example, if you have a piece of code that works with a <code class="docutils literal notranslate"><span class="pre">Shape</span></code> class, then you should be able to substitute that class with any of its subclasses, such as <code class="docutils literal notranslate"><span class="pre">Circle</span></code> or <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>, without breaking the code.</p>
+<p>In practice, this principle is about making your subclasses behave like their base classes without breaking anyone’s expectations when they call the same methods. To continue with shape-related examples, say you have a <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> class like the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_lsp.py</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>, you’ve provided the <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> method, which operates with the <code class="docutils literal notranslate"><span class="pre">.width</span></code> and <code class="docutils literal notranslate"><span class="pre">.height</span></code> <a class="reference external" href="https://realpython.com/python-classes/#instance-attributes">instance attributes</a>.</p>
+<p>Because a square is a special case of a rectangle with equal sides, you think of deriving a <code class="docutils literal notranslate"><span class="pre">Square</span></code> class from <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> in order to reuse the code. Then, you override the <a class="reference external" href="https://realpython.com/python-getter-setter/">setter</a> method for the <code class="docutils literal notranslate"><span class="pre">.width</span></code> and <code class="docutils literal notranslate"><span class="pre">.height</span></code> attributes so that when one side changes, the other side also changes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_lsp.py</span>
+
+<span class="c1"># ...</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">side</span><span class="p">,</span> <span class="n">side</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this snippet of code, you’ve defined <code class="docutils literal notranslate"><span class="pre">Square</span></code> as a subclass of <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>. As a user might expect, the class <a class="reference external" href="https://realpython.com/python-class-constructor/">constructor</a> takes only the side of the square as an argument. Internally, the <code class="docutils literal notranslate"><span class="pre">.__init__()</span></code> method initializes the parent’s attributes, <code class="docutils literal notranslate"><span class="pre">.width</span></code> and <code class="docutils literal notranslate"><span class="pre">.height</span></code>, with the <code class="docutils literal notranslate"><span class="pre">side</span></code> argument.</p>
+<p>You’ve also defined a <a class="reference external" href="https://realpython.com/python-classes/#special-methods-and-protocols">special method</a>, <a class="reference external" href="https://realpython.com/python-getter-setter/#the-__setattr__-and-__getattr__-methods"><code class="docutils literal notranslate"><span class="pre">.__setattr__()</span></code></a>, to hook into Python’s attribute-setting mechanism and intercept the <a class="reference external" href="https://realpython.com/python-assignment-operator/">assignment</a> of a new value to either the <code class="docutils literal notranslate"><span class="pre">.width</span></code> or <code class="docutils literal notranslate"><span class="pre">.height</span></code> attribute. Specifically, when you set one of those attributes, the other attribute is also set to the same value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Square</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">square</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">square</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Square</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;shapes_lsp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now you’ve ensured that the <code class="docutils literal notranslate"><span class="pre">Square</span></code> object always remains a valid square, making your life easier for the small price of a bit of wasted memory. Unfortunately, this violates the Liskov substitution principle because you can’t replace instances of <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> with their <code class="docutils literal notranslate"><span class="pre">Square</span></code> counterparts.</p>
+<p>When someone expects a rectangle object in their code, they might assume that it’ll behave like one by exposing two independent <code class="docutils literal notranslate"><span class="pre">.width</span></code> and <code class="docutils literal notranslate"><span class="pre">.height</span></code> attributes. Meanwhile, your <code class="docutils literal notranslate"><span class="pre">Square</span></code> class breaks that assumption by changing the behavior promised by the object’s interface. That could have surprising and unwanted consequences, which would likely be hard to <a class="reference external" href="https://realpython.com/python-debugging-pdb/">debug</a>.</p>
+<p>While a square is a specific type of rectangle in mathematics, the classes that represent those shapes shouldn’t be in a parent-child relationship if you want them to comply with the Liskov substitution principle. One way to solve this problem is to create a base class for both <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> and <code class="docutils literal notranslate"><span class="pre">Square</span></code> to extend:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_lsp.py</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Shape</span></code> becomes the type that you can substitute through <strong>polymorphism</strong> with either <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> or <code class="docutils literal notranslate"><span class="pre">Square</span></code>, which are now siblings rather than a parent and a child. Notice that both concrete shape types have distinct sets of attributes, different initializer methods, and could potentially implement even more separate behaviors. The only thing that they have in common is the ability to calculate their area.</p>
+<p>With this implementation in place, you can use the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> type interchangeably with its <code class="docutils literal notranslate"><span class="pre">Square</span></code> and <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> subtypes when you only care about their common behavior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Square</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">get_total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">get_total_area</span><span class="p">([</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+<span class="mi">75</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Square</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span> <span class="nf">get_total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;shapes_lsp&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, you pass a pair consisting of a rectangle and a square into a function that calculates their total area. Because the function only cares about the <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> method, it doesn’t matter that the shapes are different. This is the essence of the Liskov substitution principle.</p>
+</section>
+<section id="interface-segregation-principle-isp">
+<h2><strong>4. Interface Segregation Principle (ISP)</strong><a class="headerlink" href="#interface-segregation-principle-isp" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Clients should not be forced to depend upon methods that they do not use. Interfaces belong to clients, not to hierarchies.</p>
+</div></blockquote>
+<p>In this case, <em>clients</em> are classes and subclasses, and <em>interfaces</em> consist of methods and attributes. In other words, <strong>if a class doesn’t use particular methods or attributes, then those methods and attributes should be segregated into more specific classes.</strong></p>
+<p>Consider the following example of class <a class="reference external" href="https://realpython.com/python-classes/#class-hierarchies">hierarchy</a> to model printing machines:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># printers_isp.py</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in black and white...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Fax functionality not supported&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Scan functionality not supported&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ModernPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in color...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Faxing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scanning </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the base class, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, provides the interface that its subclasses must implement. <code class="docutils literal notranslate"><span class="pre">OldPrinter</span></code> inherits from <code class="docutils literal notranslate"><span class="pre">Printer</span></code> and must implement the same interface. However, <code class="docutils literal notranslate"><span class="pre">OldPrinter</span></code> doesn’t use the <code class="docutils literal notranslate"><span class="pre">.fax()</span></code> and <code class="docutils literal notranslate"><span class="pre">.scan()</span></code> methods because this type of printer doesn’t support these functionalities.</p>
+<p><strong>This implementation violates the ISP because it forces <code class="docutils literal notranslate"><span class="pre">OldPrinter</span></code> to expose an interface that the class doesn’t implement or need.</strong> To fix this issue, you should separate the interfaces into smaller and more specific classes. Then you can create concrete classes by inheriting from multiple interface classes as needed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># printers_isp.py</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Fax</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Scanner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in black and white...&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NewPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">,</span> <span class="n">Fax</span><span class="p">,</span> <span class="n">Scanner</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in color...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Faxing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scanning </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, <code class="docutils literal notranslate"><span class="pre">Fax</span></code>, and <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> are base classes that provide specific interfaces with a single responsibility each. <strong>To create <code class="docutils literal notranslate"><span class="pre">OldPrinter</span></code>, you only inherit the <code class="docutils literal notranslate"><span class="pre">Printer</span></code> interface. This way, the class won’t have unused methods.</strong> To create the <code class="docutils literal notranslate"><span class="pre">ModernPrinter</span></code> class, you need to inherit from all the interfaces. In short, <strong>you’ve segregated the <code class="docutils literal notranslate"><span class="pre">Printer</span></code> interface.</strong></p>
+<p>This class design allows you to create different machines with different sets of functionalities, making your design more flexible and extensible.</p>
+</section>
+<section id="dependency-inversion-principle-dip">
+<h2><strong>5. Dependency Inversion Principle (DIP)</strong><a class="headerlink" href="#dependency-inversion-principle-dip" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Abstractions should not depend upon details. Details should depend upon abstractions.</p>
+</div></blockquote>
+<p>That sounds pretty complex. Here’s an example that will help to clarify it. Say you’re building an application and have a <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code> class to display data to the users in a friendly way. The app currently gets its data from a database, so you end up with the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># app_dip.py</span>
+
+<span class="k">class</span> <span class="nc">FrontEnd</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">back_end</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">back_end</span> <span class="o">=</span> <span class="n">back_end</span>
+
+    <span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">back_end</span><span class="o">.</span><span class="n">get_data_from_database</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Display data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">BackEnd</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_data_from_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Data from the database&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code> class depends on the <code class="docutils literal notranslate"><span class="pre">BackEnd</span></code> class and its concrete implementation. You can say that both classes are tightly coupled. This coupling can lead to scalability issues. For example, say that your app is growing fast, and you want the app to be able to read data from a <a class="reference external" href="https://realpython.com/api-integration-in-python/">REST API</a>. How would you do that?</p>
+<p>You may think of adding a new method to <code class="docutils literal notranslate"><span class="pre">BackEnd</span></code> to retrieve the data from the REST API. However, that will also require you to modify <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code>, which should be closed to modification, according to the <a class="reference external" href="https://realpython.com/solid-principles-python/#open-closed-principle-ocp">open-closed principle</a>.</p>
+<p>To fix the issue, you can apply the dependency inversion principle and make your classes depend on abstractions rather than on concrete implementations like <code class="docutils literal notranslate"><span class="pre">BackEnd</span></code>. In this specific example, you can introduce a <code class="docutils literal notranslate"><span class="pre">DataSource</span></code> class that provides the interface to use in your concrete classes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># app_dip.py</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">FrontEnd</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_source</span> <span class="o">=</span> <span class="n">data_source</span>
+
+    <span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Display data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DataSource</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Database</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Data from the database&quot;</span>
+
+<span class="k">class</span> <span class="nc">API</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Data from the API&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this redesign of your classes, you’ve added a <code class="docutils literal notranslate"><span class="pre">DataSource</span></code> class as an abstraction that provides the required interface, or the <code class="docutils literal notranslate"><span class="pre">.get_data()</span></code> method. Note how <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code> now depends on the interface provided by <code class="docutils literal notranslate"><span class="pre">DataSource</span></code>, which is an abstraction.</p>
+<p>Then you define the <code class="docutils literal notranslate"><span class="pre">Database</span></code> class, which is a concrete implementation for those cases where you want to retrieve the data from your database. This class depends on the <code class="docutils literal notranslate"><span class="pre">DataSource</span></code> abstraction through inheritance. Finally, you define the <code class="docutils literal notranslate"><span class="pre">API</span></code> class to support retrieving the data from the REST API. This class also depends on the <code class="docutils literal notranslate"><span class="pre">DataSource</span></code> abstraction.</p>
+<p>Here’s how you can use the <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code> class in your code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">app_dip</span> <span class="kn">import</span> <span class="n">API</span><span class="p">,</span> <span class="n">Database</span><span class="p">,</span> <span class="n">FrontEnd</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">db_front_end</span> <span class="o">=</span> <span class="n">FrontEnd</span><span class="p">(</span><span class="n">Database</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">db_front_end</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span>
+<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api_front_end</span> <span class="o">=</span> <span class="n">FrontEnd</span><span class="p">(</span><span class="n">API</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">api_front_end</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span>
+<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">API</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+    <span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span>
+            <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to SOLID Principles</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to SOLID principles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-principles-improve-object-oriented-design-in-python"><strong>SOLID Principles: Improve Object-Oriented Design in Python</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-responsibility-principle-srp">1. <strong>Single-Responsibility Principle (SRP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-closed-principle-ocp"><strong>2. Open-Closed Principle (OCP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liskov-substitution-principle-lsp"><strong>3. Liskov Substitution Principle (LSP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-segregation-principle-isp"><strong>4. Interface Segregation Principle (ISP)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-inversion-principle-dip"><strong>5. Dependency Inversion Principle (DIP)</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Juliana Alejandra Gutierrez Castro
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
