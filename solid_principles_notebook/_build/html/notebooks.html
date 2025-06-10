@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -427,24 +427,24 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_manager_srp.py</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
 
-<span class="k">class</span> <span class="nc">FileManager</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FileManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
             <span class="n">archive</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
             <span class="n">archive</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
 </pre></div>
@@ -472,28 +472,28 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># file_manager_srp.py</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
 
-<span class="k">class</span> <span class="nc">FileManager</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FileManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">ZipFileManager</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ZipFileManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
             <span class="n">archive</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decompress</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.zip&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
             <span class="n">archive</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
 </pre></div>
@@ -515,10 +515,10 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_ocp.py</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
 
-<span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">=</span> <span class="n">shape_type</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span>
@@ -526,7 +526,7 @@ SOLID is a set of five object-oriented design principles that can help you write
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;circle&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;radius&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;rectangle&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">==</span> <span class="s2">&quot;circle&quot;</span><span class="p">:</span>
@@ -540,7 +540,117 @@ SOLID is a set of five object-oriented design principles that can help you write
 <p><code class="docutils literal notranslate"><span class="pre">Shape</span></code> also has a <code class="docutils literal notranslate"><span class="pre">.calculate_area()</span></code> method that computes the area of the current shape according to its <code class="docutils literal notranslate"><span class="pre">.shape_type</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_ocp</span> <span class="kn">import</span> <span class="n">Shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>ocp
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ocp
+  Using cached ocp-0.1.9-py3-none-any.whl.metadata (1.2 kB)
+
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.0.1</span> -&gt; <span class=" -Color -Color-Green">25.1.1</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+<span class=" -Color -Color-Red">ERROR: Exception:</span>
+<span class=" -Color -Color-Red">Traceback (most recent call last):</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/cli/base_command.py&quot;, line 106, in _run_wrapper</span>
+<span class=" -Color -Color-Red">    status = _inner_run()</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/cli/base_command.py&quot;, line 97, in _inner_run</span>
+<span class=" -Color -Color-Red">    return self.run(options, args)</span>
+<span class=" -Color -Color-Red">           ~~~~~~~~^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/cli/req_command.py&quot;, line 67, in wrapper</span>
+<span class=" -Color -Color-Red">    return func(self, options, args)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/commands/install.py&quot;, line 386, in run</span>
+<span class=" -Color -Color-Red">    requirement_set = resolver.resolve(</span>
+<span class=" -Color -Color-Red">        reqs, check_supported_wheels=not options.target_dir</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/resolver.py&quot;, line 95, in resolve</span>
+<span class=" -Color -Color-Red">    result = self._result = resolver.resolve(</span>
+<span class=" -Color -Color-Red">                            ~~~~~~~~~~~~~~~~^</span>
+<span class=" -Color -Color-Red">        collected.requirements, max_rounds=limit_how_complex_resolution_can_be</span>
+<span class=" -Color -Color-Red">        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">    ^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers.py&quot;, line 546, in resolve</span>
+<span class=" -Color -Color-Red">    state = resolution.resolve(requirements, max_rounds=max_rounds)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers.py&quot;, line 397, in resolve</span>
+<span class=" -Color -Color-Red">    self._add_to_criteria(self.state.criteria, r, parent=None)</span>
+<span class=" -Color -Color-Red">    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers.py&quot;, line 173, in _add_to_criteria</span>
+<span class=" -Color -Color-Red">    if not criterion.candidates:</span>
+<span class=" -Color -Color-Red">           ^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/resolvelib/structs.py&quot;, line 156, in __bool__</span>
+<span class=" -Color -Color-Red">    return bool(self._sequence)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py&quot;, line 174, in __bool__</span>
+<span class=" -Color -Color-Red">    return any(self)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py&quot;, line 162, in &lt;genexpr&gt;</span>
+<span class=" -Color -Color-Red">    return (c for c in iterator if id(c) not in self._incompatible_ids)</span>
+<span class=" -Color -Color-Red">                       ^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py&quot;, line 53, in _iter_built</span>
+<span class=" -Color -Color-Red">    candidate = func()</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/factory.py&quot;, line 187, in _make_candidate_from_link</span>
+<span class=" -Color -Color-Red">    base: Optional[BaseCandidate] = self._make_base_candidate_from_link(</span>
+<span class=" -Color -Color-Red">                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^</span>
+<span class=" -Color -Color-Red">        link, template, name, version</span>
+<span class=" -Color -Color-Red">        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">    ^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/factory.py&quot;, line 233, in _make_base_candidate_from_link</span>
+<span class=" -Color -Color-Red">    self._link_candidate_cache[link] = LinkCandidate(</span>
+<span class=" -Color -Color-Red">                                       ~~~~~~~~~~~~~^</span>
+<span class=" -Color -Color-Red">        link,</span>
+<span class=" -Color -Color-Red">        ^^^^^</span>
+<span class=" -Color -Color-Red">    ...&lt;3 lines&gt;...</span>
+<span class=" -Color -Color-Red">        version=version,</span>
+<span class=" -Color -Color-Red">        ^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">    ^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/candidates.py&quot;, line 304, in __init__</span>
+<span class=" -Color -Color-Red">    super().__init__(</span>
+<span class=" -Color -Color-Red">    ~~~~~~~~~~~~~~~~^</span>
+<span class=" -Color -Color-Red">        link=link,</span>
+<span class=" -Color -Color-Red">        ^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">    ...&lt;4 lines&gt;...</span>
+<span class=" -Color -Color-Red">        version=version,</span>
+<span class=" -Color -Color-Red">        ^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">    ^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/candidates.py&quot;, line 159, in __init__</span>
+<span class=" -Color -Color-Red">    self.dist = self._prepare()</span>
+<span class=" -Color -Color-Red">                ~~~~~~~~~~~~~^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/candidates.py&quot;, line 248, in _prepare</span>
+<span class=" -Color -Color-Red">    self._check_metadata_consistency(dist)</span>
+<span class=" -Color -Color-Red">    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/candidates.py&quot;, line 230, in _check_metadata_consistency</span>
+<span class=" -Color -Color-Red">    list(dist.iter_dependencies(list(dist.iter_provided_extras())))</span>
+<span class=" -Color -Color-Red">    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_internal/metadata/importlib/_dists.py&quot;, line 225, in iter_dependencies</span>
+<span class=" -Color -Color-Red">    elif not extras and req.marker.evaluate({&quot;extra&quot;: &quot;&quot;}):</span>
+<span class=" -Color -Color-Red">                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/markers.py&quot;, line 319, in evaluate</span>
+<span class=" -Color -Color-Red">    return _evaluate_markers(</span>
+<span class=" -Color -Color-Red">        self._markers, _repair_python_full_version(current_environment)</span>
+<span class=" -Color -Color-Red">    )</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/markers.py&quot;, line 225, in _evaluate_markers</span>
+<span class=" -Color -Color-Red">    groups[-1].append(_eval_op(lhs_value, op, rhs_value))</span>
+<span class=" -Color -Color-Red">                      ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/markers.py&quot;, line 183, in _eval_op</span>
+<span class=" -Color -Color-Red">    return spec.contains(lhs, prereleases=True)</span>
+<span class=" -Color -Color-Red">           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/specifiers.py&quot;, line 552, in contains</span>
+<span class=" -Color -Color-Red">    normalized_item = _coerce_version(item)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/specifiers.py&quot;, line 28, in _coerce_version</span>
+<span class=" -Color -Color-Red">    version = Version(version)</span>
+<span class=" -Color -Color-Red">  File &quot;/home/juliana/.cache/pypoetry/virtualenvs/solid-principles-notebook-DQFqUd1F-py3.13/lib/python3.13/site-packages/pip/_vendor/packaging/version.py&quot;, line 202, in __init__</span>
+<span class=" -Color -Color-Red">    raise InvalidVersion(f&quot;Invalid version: {version!r}&quot;)</span>
+<span class=" -Color -Color-Red">pip._vendor.packaging.version.InvalidVersion: Invalid version: &#39;x86_64&#39;</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapes_ocp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Shape</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span>
@@ -554,8 +664,8 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_ocp</span> <span class="kn">import</span> <span class="n">Shape</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapes_ocp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Shape</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">Shape</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span>
 
@@ -571,40 +681,40 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_ocp.py</span>
 
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
 
-<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shape_type</span> <span class="o">=</span> <span class="n">shape_type</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
 
-<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;square&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
@@ -627,12 +737,12 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_lsp.py</span>
 
-<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
 </pre></div>
 </div>
@@ -646,11 +756,11 @@ SOLID is a set of five object-oriented design principles that can help you write
 
 <span class="c1"># ...</span>
 
-<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">side</span><span class="p">,</span> <span class="n">side</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
@@ -663,7 +773,7 @@ SOLID is a set of five object-oriented design principles that can help you write
 <p>You’ve also defined a <a class="reference external" href="https://realpython.com/python-classes/#special-methods-and-protocols">special method</a>, <a class="reference external" href="https://realpython.com/python-getter-setter/#the-__setattr__-and-__getattr__-methods"><code class="docutils literal notranslate"><span class="pre">.__setattr__()</span></code></a>, to hook into Python’s attribute-setting mechanism and intercept the <a class="reference external" href="https://realpython.com/python-assignment-operator/">assignment</a> of a new value to either the <code class="docutils literal notranslate"><span class="pre">.width</span></code> or <code class="docutils literal notranslate"><span class="pre">.height</span></code> attribute. Specifically, when you set one of those attributes, the other attribute is also set to the same value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Square</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapes_lsp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Square</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
@@ -679,18 +789,6 @@ SOLID is a set of five object-oriented design principles that can help you write
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Square</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">vars</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;shapes_lsp&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now you’ve ensured that the <code class="docutils literal notranslate"><span class="pre">Square</span></code> object always remains a valid square, making your life easier for the small price of a bit of wasted memory. Unfortunately, this violates the Liskov substitution principle because you can’t replace instances of <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> with their <code class="docutils literal notranslate"><span class="pre">Square</span></code> counterparts.</p>
 <p>When someone expects a rectangle object in their code, they might assume that it’ll behave like one by exposing two independent <code class="docutils literal notranslate"><span class="pre">.width</span></code> and <code class="docutils literal notranslate"><span class="pre">.height</span></code> attributes. Meanwhile, your <code class="docutils literal notranslate"><span class="pre">Square</span></code> class breaks that assumption by changing the behavior promised by the object’s interface. That could have surprising and unwanted consequences, which would likely be hard to <a class="reference external" href="https://realpython.com/python-debugging-pdb/">debug</a>.</p>
@@ -699,26 +797,26 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shapes_lsp.py</span>
 
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
 
-<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
 
-    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -728,25 +826,13 @@ SOLID is a set of five object-oriented design principles that can help you write
 <p>With this implementation in place, you can use the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> type interchangeably with its <code class="docutils literal notranslate"><span class="pre">Square</span></code> and <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> subtypes when you only care about their common behavior:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Square</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapes_lsp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Square</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">get_total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">get_total_area</span><span class="p">([</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Square</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
 <span class="mi">75</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">shapes_lsp</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Square</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span> <span class="nf">get_total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;shapes_lsp&#39;
 </pre></div>
 </div>
 </div>
@@ -764,39 +850,39 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># printers_isp.py</span>
 
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="k">class</span> <span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in black and white...&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Fax functionality not supported&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Scan functionality not supported&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">ModernPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ModernPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in color...&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Faxing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scanning </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -808,35 +894,35 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># printers_isp.py</span>
 
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="k">class</span> <span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Printer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Fax</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Fax</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Scanner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Scanner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OldPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in black and white...&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">NewPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">,</span> <span class="n">Fax</span><span class="p">,</span> <span class="n">Scanner</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewPrinter</span><span class="p">(</span><span class="n">Printer</span><span class="p">,</span> <span class="n">Fax</span><span class="p">,</span> <span class="n">Scanner</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2"> in color...&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Faxing </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scanning </span><span class="si">{</span><span class="n">document</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -855,16 +941,16 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># app_dip.py</span>
 
-<span class="k">class</span> <span class="nc">FrontEnd</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">back_end</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FrontEnd</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">back_end</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">back_end</span> <span class="o">=</span> <span class="n">back_end</span>
 
-    <span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">back_end</span><span class="o">.</span><span class="n">get_data_from_database</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Display data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">BackEnd</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">get_data_from_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BackEnd</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data_from_database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Data from the database&quot;</span>
 </pre></div>
 </div>
@@ -877,27 +963,27 @@ SOLID is a set of five object-oriented design principles that can help you write
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># app_dip.py</span>
 
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="k">class</span> <span class="nc">FrontEnd</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FrontEnd</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_source</span> <span class="o">=</span> <span class="n">data_source</span>
 
-    <span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">display_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Display data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">DataSource</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataSource</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Database</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Database</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Data from the database&quot;</span>
 
-<span class="k">class</span> <span class="nc">API</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">API</span><span class="p">(</span><span class="n">DataSource</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Data from the API&quot;</span>
 </pre></div>
 </div>
@@ -908,23 +994,15 @@ SOLID is a set of five object-oriented design principles that can help you write
 <p>Here’s how you can use the <code class="docutils literal notranslate"><span class="pre">FrontEnd</span></code> class in your code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">app_dip</span> <span class="kn">import</span> <span class="n">API</span><span class="p">,</span> <span class="n">Database</span><span class="p">,</span> <span class="n">FrontEnd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">app_dip</span><span class="w"> </span><span class="kn">import</span> <span class="n">API</span><span class="p">,</span> <span class="n">Database</span><span class="p">,</span> <span class="n">FrontEnd</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">db_front_end</span> <span class="o">=</span> <span class="n">FrontEnd</span><span class="p">(</span><span class="n">Database</span><span class="p">())</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">db_front_end</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span>
-<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span>
+<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">database</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api_front_end</span> <span class="o">=</span> <span class="n">FrontEnd</span><span class="p">(</span><span class="n">API</span><span class="p">())</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">api_front_end</span><span class="o">.</span><span class="n">display_data</span><span class="p">()</span>
-<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">API</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-    <span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span>
-            <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<span class="n">Display</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">API</span>
 </pre></div>
 </div>
 </div>

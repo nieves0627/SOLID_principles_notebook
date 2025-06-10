@@ -14,7 +14,7 @@ To get started, you'll need to install Poetry, which will help manage your depen
 
 ```bash
    git clone https://github.com/nieves0627/SOLID_principles_notebook
-   cd PEP8_and_style_conventions_notebook
+   cd SOLID_principles_notebook
 ```
 3. Install dependencies:
 ```bash
@@ -26,7 +26,7 @@ This command will install all necessary dependencies specified in the `pyproject
 ### Create Notes
 1. Start Jupyter Notebook:
 ```bash
-poetry run jupyter notebook
+poetry run jupyter book
 ```
 This will open the Jupyter Notebook interface in your web browser. You can create new notebooks to take notes.
 
@@ -46,5 +46,5 @@ Once you've created your notes, you can publish them to GitHub Pages:
  ## Access Your Notes
  After publishing, your notes will be available at:
  ```bash
-https://github.com/nieves0627/SOLID_principles_notebook
+https://nieves0627.github.io/SOLID_principles_notebook
 ```
