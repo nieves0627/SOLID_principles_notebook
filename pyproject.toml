@@ -1,17 +1,16 @@
-[tool.poetry]
-name = "solid-principles"
+[project]
+name = "solid-principles-notebook"
 version = "0.1.0"
 description = ""
-authors = ["Juliana Gutierrez <alejuli.0627@gmail.com>"]
+authors = [
+    {name = "Juliana Gutierrez",email = "alejuli.0627@gmail.com"}
+]
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-jupyter-book = "^1.0.3"
-ipykernel = "^6.29.5"
-ghp-import = "^2.1.0"
+requires-python = "^3.10"
+dependencies = [
+]
 
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
